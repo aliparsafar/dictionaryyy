@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import WordDefinition from './WordDefinition';
+import ImageDisplay from './imageDisplay';
 
 
 const API_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
@@ -58,10 +60,10 @@ const DictionarySearch: React.FC = () => {
 
       {wordLoading && <p className="text-gray-400">Loading...</p>}
       {wordError && <p className="text-red-500">Error fetching word data.</p>}
-      {wordData && < wordData={wordData} />}
+      {wordData && <WordDefinition wordData={wordData} />}
 
       {imageError && <p className="text-red-500 mt-4">Error fetching image.</p>}
-      {imageData && < imageUrl={imageData} />}
+      {imageData && <ImageDisplay imageUrl={imageData} />}
     </div>
   );
 };
